@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: web-app
+          envFrom:
+            - configMapRef:
+                name: app-config
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "2000m"
+            requests:
+              memory: "512Mi"
+              cpu: "1000m"

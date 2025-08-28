@@ -1,0 +1,39 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+nameSuffix: -dev
+namespace: dev
+
+replicas:
+  - name: web-app
+    count: 1
+
+configMapGenerator:
+  - name: app-config
+    behavior: create
+    literals:
+      - ENVIRONMENT=development
+      - LOG_LEVEL=debug
+      - FEATURE_FLAG=alpha
+
+secretGenerator:
+  - name: app-secrets
+    behavior: create
+    literals:
+      - DB_PASSWORD=devpassword123
+      - API_KEY=dev-api-key-456
+
+patches:
+  - target:
+      kind: Deployment
+      name: web-app
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: 256Mi
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/requests/memory
+        value: 128Mi

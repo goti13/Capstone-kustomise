@@ -1,0 +1,24 @@
+# Kustomize build artifacts
+*.log
+build-output.yaml  # Only exclude generated files, not all YAML
+
+# Local env files (never commit secrets)
+**/secret.env
+**/config.env
+
+# macOS & editor junk
+.DS_Store
+.idea/
+.vscode/
+
+# Kubernetes
+.kube/
+
+# Temporary files
+tmp/
+temp/
+
+# IDE specific files
+*.swp
+*.swo
+*~
