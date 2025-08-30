@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = "/usr/local/bin:${env.PATH}"
-        KUBECONFIG = "/Users/geraldoti/Documents/repos/darey/kustomize-capstone" 
+        KUBECONFIG = "/Users/geraldoti/kubeconfig-cred/config" 
     }
 
     parameters {
