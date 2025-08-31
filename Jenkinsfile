@@ -47,8 +47,8 @@ pipeline {
                 sh """
                     set -e
                     echo "Deploying to ${params.ENVIRONMENT} cluster"
-                    # Create namespace if it doesn't exist
-                    kubectl create namespace ${params.ENVIRONMENT} --dry-run=client -o yaml | kubectl apply -f -
+                    # Create namespace if it doesn't exist (simpler approach)
+                    kubectl create namespace ${params.ENVIRONMENT} --dry-run=client -o yaml | kubectl apply --validate=false -f -
                     # Apply with explicit namespace
                     kubectl apply -n ${params.ENVIRONMENT} -f build-output.yaml
                     echo "✓ Deployment completed successfully"
