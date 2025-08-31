@@ -9,7 +9,7 @@ namespace: dev
 
 replicas:
   - name: web-app
-    count: 1
+    count: 2
 
 configMapGenerator:
   - name: app-config
