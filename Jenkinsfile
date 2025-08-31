@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = "/usr/local/bin:${env.PATH}"
-        KUBECONFIG = "/Users/geraldoti/kubeconfig-cred/config" 
+        KUBECONFIG = "/Users/geraldoti/.kube/config" 
     }
 
     parameters {
