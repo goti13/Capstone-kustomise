@@ -5,7 +5,7 @@ resources:
   - ../../base
 
 nameSuffix: -prod
-namespace: production
+namespace: prod
 
 replicas:
   - name: web-app
